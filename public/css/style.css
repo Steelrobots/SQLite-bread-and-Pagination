@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    border: 3px;
+    margin: auto;
+    background-color: whitesmoke;
+    width: 70%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgb(167, 167, 167);
+}
+
+.inside {
+    background-color: white;
+    padding: 5px 15px;
+}
+
+.inline {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.contain-input {
+    float: right;
+    width: 80%;
+    resize: vertical;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: medium;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: whitesmoke;
+}
+label{
+    padding: 10px 0px;
+    display: inline-block;
+}
+.add {
+    background-color: #0C6DFD;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    border-radius: 7px;
+    margin: 10px 0px 10px 20px;
+}
+.update{
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: #198753;
+    border-radius: 8px;
+    width: 100px;
+    padding: 10px;
+}
+.delete{
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: #DC3444;
+    border-radius: 8px;
+    width: 100px;
+    padding: 10px;
+}
+
+.table {
+    background-color: white;
+    padding: 25px 0px 10px;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px 15px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: whitesmoke;
+}
+
+.rowbirth {
+    box-sizing: border-box;
+    display: block;
+    margin-top: 10px;
+    padding-right: 5px;
+    width: 100%;
+
+}
+
+.rowbirth label {
+    float: left;
+    width: 18%;
+    display: block;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.rowbirth input,
+.rowbirth p {
+    display: inline-block
+}
+
+.birthdate {
+    box-sizing: border-box;
+    display: inline-block;
+    padding-left: 24px;
+    width: 82%;
+}
+
+.birthdate input{
+    width: 40%;
+}
+
+
+.birthdate p {
+    text-align: center;
+    padding: 0px;
+    width: 20%;
+}
+.birthdate :first-child{
+    float: left;
+    margin-top: 4px;
+}
+
+.birthdate :last-child {
+    float: right;
+    margin-top: 4px;
+}
+
+.rowmarried{
+    box-sizing: border-box;
+    padding: 0px 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+.rowmarried label{
+    width: 18%;
+}
+.rowmarried select{
+    float: right;
+    width: 80%;
+    border: 2px solid whitesmoke;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: medium;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #007bff;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+
+
+.pagination .active {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.pagination .disabled {
+    color: #808080;
+    pointer-events: none;
+}

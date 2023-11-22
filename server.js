@@ -18,7 +18,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    const { page= 1,name, height, weight, strBirth,endBirth,Operator, married } = req.query
+    const { page = 1, name, height, weight, strBirth, endBirth, Operator, married } = req.query
     const queries = []
     const params = []
     const paramscount = []
@@ -35,37 +35,37 @@ app.get('/', (req, res) => {
         params.push(height)
         paramscount.push(height)
     }
-     if (weight) {
+    if (weight) {
         queries.push(`weight = ? `);
         params.push(weight)
         paramscount.push(weight)
     }
-     if (strBirth && endBirth) {
+    if (strBirth && endBirth) {
         queries.push(`birthdate BETWEEN ? AND ?`);
-        params.push(strBirth,endBirth)
-        paramscount.push(strBirth,endBirth)
-        
-    } else if(strBirth){
+        params.push(strBirth, endBirth)
+        paramscount.push(strBirth, endBirth)
+
+    } else if (strBirth) {
         queries.push(`birthdate >= ?`);
         params.push(strBirth)
         paramscount.push(strBirth)
-    } else if (endBirth){
+    } else if (endBirth) {
         queries.push(`birthdate <= ?`);
         params.push(endBirth)
         paramscount.push(endBirth)
     }
-     if (married) {
+    if (married) {
         queries.push(`married = ?`);
         params.push(married)
         paramscount.push(married)
     }
     let sqlcount = 'SELECT COUNT (*) as total FROM data';
     let sql = 'SELECT * FROM data'
-    if (queries.length > 0){
+    if (queries.length > 0) {
         sql += ` WHERE ${queries.join(`${Operator} `)}`
         sqlcount += ` WHERE ${queries.join(`${Operator} `)}`
     }
-    console.log(sql, params)
+    // console.log(sql, params)
     sql += ' LIMIT ? OFFSET ?';
     params.push(limit, offset)
 
@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
             const pages = Math.ceil(total / limit);
             db.all(sql, params, (err, data) => {
                 if (err) res.render(err)
-                else res.render('index', { data, query: req.query, pages, offset, page, url: req.url })
+                else res.render('index', { data, query: req.query, pages, offset, page})
             })
         }
     })
@@ -96,16 +96,17 @@ app.post('/add', (req, res) => {
 
 app.get('/edit/:id', (req, res) => {
     const id = req.params.id
-   
+
     db.get('SELECT * FROM data WHERE id = ?', [id], (err, data) => {
         // console.log(`ini edit`, {data})
-        if(err) return res.send(err)
+        if (err) return res.send(err)
         else
-        res.render('form', { data })
+            res.render('form', { data })
     })
 })
 app.post('/edit/:id', (req, res) => {
     const id = req.params.id
+    console.log(req.query)
     db.run('UPDATE data SET name=?, height=?, weight =?, birthdate =?, married=? WHERE id=?', [req.body.name, req.body.height, req.body.weight, req.body.birthdate, req.body.married, id], (err) => {
         if (err) return res.send(err)
         res.redirect('/')
