@@ -14,6 +14,7 @@
         <h1>SQLite Bread(Browse, Read, Edit, Add, Delete) and Pagination</h1>
 
         <form action="" method="get">
+            <input type="hidden" id="page" name="page" value="1">
             <div class="inside">
                 <div class="inline"> <label for="name">Name</label>
                     <div class="contain-input"><input type="text" id="name" name="name" placeholder="insert your name"
@@ -28,14 +29,14 @@
                             placeholder="insert your weight" value="<%= query.weight%>"></div>
                 </div>
                 <div class="rowbirth"><label for="birthdate">Birthdate</label>
-                <div class="birthdate">
-                    <input type="date" id="strBirth" name="strBirth" value="<%= query.strBirth%>">
-                    <p>s.d</p>
-                    <input type="date" id="endBirth" name="endBirth" value="<%= query.endBirth%>">
+                    <div class="birthdate">
+                        <input type="date" id="strBirth" name="strBirth" value="<%= query.strBirth%>">
+                        <p>s.d</p>
+                        <input type="date" id="endBirth" name="endBirth" value="<%= query.endBirth%>">
+                    </div>
                 </div>
-            </div>
                 <div class="rowmarried"><label for="married">Is Married</label>
-                
+
                     <%if(query.married==0){ %>
                         <select name="married" id="married">
                             <option value="" disabled>-select married-</option>
@@ -55,113 +56,130 @@
                                     <option value="1">Yes</option>
                                 </select>
                                 <%}%>
-               
-            </div>
-                <div>
-                    <legend>Operator</legend>
-                    <div>
-                        <%if(query.Operator== "OR" ){ %>
-                            <input type="radio" id="OR" name="Operator" value="OR" checked  />OR
-                    </div>
-                    <div>
-                        <input type="radio" id="AND" name="Operator" value="AND" />AND
 
-                    </div>
                 </div>
-                <%} else if(query.Operator=="AND" ){%>
-                    <input type="radio" id="OR" name="Operator" value="OR" />OR
-            </div>
-            <div>
-                <input type="radio" id="AND" name="Operator" value="AND" checked />AND
-
-            </div>
-            <%} else {%>
-                <input type="radio" id="OR" name="Operator" value="OR" checked required />OR
-                    </div>
-                    <div>
-                        <input type="radio" id="AND" name="Operator" value="AND" />AND
-
-                    </div>
+                <div class="rowradio">
+                    <legend>Operation</legend>
+                    <% if(query.Operator=='OR' ) { %>
+                        <div class="radio">
+                            <div class="option">
+                                <input type="radio" id="OR" name="Operator" value="OR" checked />OR
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="AND" name="Operator" value="AND" />AND
+                            </div>
+                        </div>
+                        <% } else if(query.Operator=="AND" ) { %>
+                            <div class="radio">
+                                <div class="option">
+                                    <input type="radio" id="OR" name="Operator" value="OR" />OR
+                                </div>
+                                <div class="option">
+                                    <input type="radio" id="AND" name="Operator" checked value="AND" />AND
+                                </div>
+                            </div>
+                            <% } else { %>
+                                <div class="radio">
+                                    <div class="option">
+                                        <input type="radio" id="OR" name="Operator" value="OR" checked required />OR
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" id="AND" name="Operator" value="AND" />AND
+                                    </div>
+                                </div>
+                                <% } %>
                 </div>
-                <%}%>
-    
+                <div class="findcluster">
+                    <button type="submit" class="search">Search</button>
+                    <a href="/" class="reset">Reset</a>
+                </div>
+            </div>
+        </form>
 
-    <div>
-        <button type="submit" class="submit">Save</button>
-        <a href="/" class="reset">Reset</a>
-    </div>
-    </div>
-    </form>
+        <div class="table">
 
-    <div class="table">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>Birth Date</th>
-                    <th>Is Married</th>
-                    <th>Action</th>
-                </tr>
-
-            </thead>
-            <tbody>
-                <%data.forEach((item,index)=>{ %>
-
+            <table>
+                <thead>
                     <tr>
-                        <td>
-                            <%= index +1 + offset%>
-                        </td>
-                        <td>
-                            <%= item.name %>
-                        </td>
-                        <td>
-                            <%= item.height %>
-                        </td>
-                        <td>
-                            <%= item.weight %>
-                        </td>
-                        <td>
-                            <%= item.birthdate %>
-                        </td>
-                        <td>
-                            <%= item.married ? "Yes" : "Not Yet" %>
-                        </td>
-                        <td>
-                            <a  href="/edit/<%= item.id%> " class="update">Update</a>&nbsp <a href="/delete/<%= item.id%>" class="delete"
-                                onclick="return confirmation('<%= item.name%>')">Delete</a>
-                        </td>
-
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Birth Date</th>
+                        <th>Is Married</th>
+                        <th>Action</th>
                     </tr>
 
+                </thead>
+                <tbody>
+                    <%data.forEach((item,index)=>{ %>
 
-                    <% }) %>
-        </table>
+                        <tr>
+                            <td>
+                                <%= index +1 + offset%>
+                            </td>
+                            <td>
+                                <%= item.name %>
+                            </td>
+                            <td>
+                                <%= item.height %>
+                            </td>
+                            <td>
+                                <%= item.weight %>
+                            </td>
+                            <td>
+                                <%= item.birthdate %>
+                            </td>
+                            <td>
+                                <%= item.married ? "Yes" : "Not Yet" %>
+                            </td>
+                            <td>
+                                <a href="/edit/<%= item.id%> " class="update">Update</a>&nbsp <a
+                                    href="/delete/<%= item.id%>" class="delete"
+                                    onclick="return confirmation('<%= item.name%>')">Delete</a>
+                            </td>
 
-    </div>
-    <div class="footer">
-        <a href="/add%> " class="add">Add</a>
-        <div class="pagination">
-            <%if(page =1){%>
-                <a href="?page=<%= page%>">&laquo;</a>
-                <%} else{%>
-                    <a href="?page=<%= page - 1%>">&laquo;</a>
-                    <%}%>
-                    <%for(let i=1; i <=pages; i++){%>
-                        <a href="/?page=<%=i%>">
-                            <%=i%>
-                        </a>
-                        <%}%>
-                            <%if(page !=pages){%>
-                                <a href="?page=<%= Number(page) +1%>">&raquo;</a>
-                                <%} else{%>
-                                    <a href="?page=<%= pages%>">&laquo;</a>
-                                    <%}%>
+                        </tr>
+
+
+                        <% }) %>
+            </table>
+
         </div>
-    </div>
+        <div class="footer">
+            <a href="/add%> " class="add">Add</a>
+            <div class="pagination">
+
+                <% if(page=='1' ) { %>
+                    <a href="<%= url.replace(`page=${page}`, `page=${page}`) %>">&laquo;</a>
+                    <% } else { %>
+                        <a href="<%= url.replace(`page=${page}`, `page=${page - 1}`) %>">&laquo;</a>
+                        <% } %>
+
+                            <div class="pagenumber">
+                                <% for(let i=1; i <=pages; i++) { %>
+                                    <% if(url.includes('page=')) { %>
+                            <% if(i == page) { %>
+                                <a href="<%= url.replace(`page=${page}`, `page=${i}`) %>" class="<%= page==i ? 'active' : '' %>"><%= i %></a>
+                            <% } else { %>
+                                <a href="<%= url.replace(`page=${page}`, `page=${i}`) %>"class="<%= page==i ? 'active' : '' %>"><%= i %></a>
+                            <% } %>
+                        <% } else { %>
+                            <% if(i == page) { %>
+                                <a href="/?page=<%= i %>" class="<%= page==i ? 'active' : '' %>"><%= i %></a>
+                            <% } else { %>
+                                <a href="/?page=<%= i %>"class="<%= page==i ? 'active' : '' %>"><%= i %></a>
+                            <% } %>
+                        <% } %>
+                    <% } %> 
+                    </div>
+                    <% if(page == pages) { %>
+                        <a href="<%= url.replace(`page=${page}`, `page=${page}`) %>">&raquo;</a>
+                    <% } else { %>
+                        <a href="<%= url.replace(`page=${page}`, `page=${(page * 1) + 1}`) %>">&raquo;</a>
+                    <% } %>
+               
+        </div>
     </div>
 
 </body>

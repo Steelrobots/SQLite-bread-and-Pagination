@@ -10,6 +10,12 @@ h1 {
     text-align: center;
     padding: 10px;
 }
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .container {
     border: 3px;
@@ -149,6 +155,15 @@ tbody tr:nth-child(odd) {
     float: right;
     margin-top: 4px;
 }
+.dateinput{
+    float: right;
+    width: 80%;
+    resize: vertical;
+}
+.radiomarried{
+    display: inline-block;
+    margin-left: 20px;
+}
 
 .rowmarried{
     box-sizing: border-box;
@@ -168,33 +183,122 @@ tbody tr:nth-child(odd) {
     padding: 10px;
     font-size: medium;
 }
+.rowradio {
+    padding: 0px;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.rowradio>legend {
+    float: left;
+    padding-left: 5px;
+    width: 18%;
+}
+
+.radio {
+    display: inline-block;
+    margin-left: 20px;
+}
+.radio .option{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.option input,
+.option label {
+    width: fit-content;
+    display: inline;
+    margin-bottom: 5px;
+}
+
+.option input {
+    cursor: pointer;
+    accent-color: blue;
+}
+.findcluster{
+    box-sizing: border-box;
+    margin: 20px 10px 0px 0px;
+    border-bottom: 1px solid #CACBCC;
+    padding-bottom: 10px;
+}
+
+.search{
+    background-color: #10CAF0;
+    color: black;
+    display: inline-block;
+    width: 115px;
+    height: 40px;
+    font-size: medium;
+    margin: 10px;
+    margin-left: 0px;
+    border-radius: 9px;
+    border: none;
+}
+.reset{
+    background-color: #FFC007;
+    display: inline-block;
+    width: 115px;
+    height: 40px;
+    border-radius: 9px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.footer-form{
+    border-top: 1px solid #CACBCC;
+}
+.save{
+    background-color: #0C6DFD;
+    color: white;
+    margin: 10px ;
+    margin-left: 15px;
+    margin-right: 1px;
+    padding: 10px ;
+    width: 95px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    font-size: medium;
+    display: inline-block;
+}
+
 
 .footer {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    border-top: 1px solid #CACBCC;
 }
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.pagination a {
-    color: #007bff;
-    padding: 8px 16px;
+.footer > a {
+    display: inline-block;
     text-decoration: none;
-    transition: background-color 0.3s;
 }
 
+.pagination {
+    display:flex;
+    margin: 10px 25px;
+    border-radius: 8px;
+    background-color: white;
+    border-collapse: collapse;
+  }
+  
+  .pagination a {
+    display: inline-block;
+    padding: 9px 13px;
+    text-decoration: none;
+    color: blue;
 
-
-.pagination .active {
-    background-color: #4caf50;
-    color: #fff;
-}
-
-.pagination .disabled {
-    color: #808080;
-    pointer-events: none;
-}
+    
+  }
+.pagenumber{
+    display: inline-block;
+}  
+.pagenumber a.active {
+    color: white;
+    background-color: rgb(0, 89, 255);
+    border: 1px solid rgb(0, 89, 255);
+  }
+  

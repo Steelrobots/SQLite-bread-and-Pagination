@@ -76,7 +76,8 @@ app.get('/', (req, res) => {
             const pages = Math.ceil(total / limit);
             db.all(sql, params, (err, data) => {
                 if (err) res.render(err)
-                else res.render('index', { data, query: req.query, pages, offset, page})
+                else res.render('index', { data, query: req.query, pages, offset, page, url: req.url })
+            
             })
         }
     })
@@ -101,12 +102,12 @@ app.get('/edit/:id', (req, res) => {
         // console.log(`ini edit`, {data})
         if (err) return res.send(err)
         else
-            res.render('form', { data })
+            res.render('update', { data })
     })
 })
 app.post('/edit/:id', (req, res) => {
     const id = req.params.id
-    console.log(req.query)
+   
     db.run('UPDATE data SET name=?, height=?, weight =?, birthdate =?, married=? WHERE id=?', [req.body.name, req.body.height, req.body.weight, req.body.birthdate, req.body.married, id], (err) => {
         if (err) return res.send(err)
         res.redirect('/')
