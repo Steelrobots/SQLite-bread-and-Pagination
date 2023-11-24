@@ -14,7 +14,7 @@
         <h1>SQLite Bread(Browse, Read, Edit, Add, Delete) and Pagination</h1>
 
         <form action="" method="get">
-            <input type="hidden" id="page" name="page" value="1">
+            <input type="hidden" name="page" value="1">
             <div class="inside">
                 <div class="inline"> <label for="name">Name</label>
                     <div class="contain-input"><input type="text" id="name" name="name" placeholder="insert your name"
@@ -149,12 +149,19 @@
         <div class="footer">
             <a href="/add%> " class="add">Add</a>
             <div class="pagination">
-
+                <% if(url.includes('page=')) { %>
                 <% if(page=='1' ) { %>
                     <a href="<%= url.replace(`page=${page}`, `page=${page}`) %>">&laquo;</a>
                     <% } else { %>
                         <a href="<%= url.replace(`page=${page}`, `page=${page - 1}`) %>">&laquo;</a>
                         <% } %>
+                        <% } else { %>
+                            <% if( page == '1') { %>
+                                <a href="#">&laquo;</a>
+                            <% } else { %>
+                                <a href="/?page=<%= page - 1 %>">&laquo;</a>
+                            <% } %>
+                            <% } %>
 
                             <div class="pagenumber">
                                 <% for(let i=1; i <=pages; i++) { %>
@@ -173,11 +180,19 @@
                         <% } %>
                     <% } %> 
                     </div>
+                    <% if(url.includes('page=')) { %>
                     <% if(page == pages) { %>
                         <a href="<%= url.replace(`page=${page}`, `page=${page}`) %>">&raquo;</a>
                     <% } else { %>
                         <a href="<%= url.replace(`page=${page}`, `page=${(page * 1) + 1}`) %>">&raquo;</a>
                     <% } %>
+                    <% } else { %>
+                        <% if( page == pages) { %>
+                            <a href="#>">&raquo;</a>
+                        <% } else { %>
+                            <a href="/?page=<%= Number(page) + 1 %>">&raquo;</a>
+                        <% } %>
+                        <% } %>
                
         </div>
     </div>
