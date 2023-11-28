@@ -233,6 +233,16 @@ tbody tr:nth-child(odd) {
     accent-color: blue;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+}
+
 .findcluster {
     box-sizing: border-box;
     margin: 20px 10px 0px 0px;
@@ -306,6 +316,7 @@ tbody tr:nth-child(odd) {
     border-radius: 8px;
     background-color: white;
     border-collapse: collapse;
+
 }
 
 .pagination a {
@@ -313,58 +324,49 @@ tbody tr:nth-child(odd) {
     padding: 9px 13px;
     text-decoration: none;
     color: blue;
-
-
 }
 
 .pagenumber {
     display: inline-block;
+
+
 }
 
 .pagenumber a.active {
     color: white;
     background-color: rgb(0, 89, 255);
-    border: 1px solid rgb(0, 89, 255);
+    border: 0.5px solid rgb(0, 89, 255);
 }
 
 #deleteConfirm {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+    
 }
 
-/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
     margin: 15px auto;
-    /* 15% from the top and centered */
     padding: 10px;
     border: 1px solid #888;
     width: 32%;
     border-radius: 8px;
-    /* Could be more or less, depending on screen size */
 }
-h4{
+
+h4 {
     margin-bottom: 0;
     margin-top: 0px;
     line-height: 1.5;
 }
-/* The "Yes" button */
+
 #confirmed {
     background-color: rgb(255, 192, 7);
     color: black;
@@ -377,13 +379,10 @@ h4{
     text-align: center;
 }
 
-#confirmed:hover {
-    opacity: 1;
-}
-#dialog{
+#dialog {
     padding-left: 20px;
 }
-/* The "No" button */
+
 .no {
     background-color: #6C757D;
     border: 1px solid #6C757D;
@@ -412,7 +411,6 @@ h4{
     justify-content: space-between;
     padding: 1rem;
     border-bottom: 1px solid #e9ecef;
-    
 }
 
 .modal-footer {
