@@ -66,8 +66,9 @@ app.get('/', (req, res) => {
         sqlcount += ` WHERE ${queries.join(`${Operator} `)}`
     }
     // console.log(sql, params)
-    sql += ' LIMIT ? OFFSET ?';
+    sql += ' ORDER BY id DESC LIMIT ? OFFSET ? ';
     params.push(limit, offset)
+    
 
     db.get(sqlcount, paramscount, (err, data) => {
         if (err) res.send(err)
