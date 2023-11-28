@@ -10,6 +10,7 @@ h1 {
     text-align: center;
     padding: 10px;
 }
+
 body {
     background-color: white;
     display: flex;
@@ -52,10 +53,12 @@ input {
     border-style: solid;
     border-color: whitesmoke;
 }
-label{
+
+label {
     padding: 10px 0px;
     display: inline-block;
 }
+
 .add {
     background-color: #0C6DFD;
     text-decoration: none;
@@ -66,7 +69,8 @@ label{
     border-radius: 7px;
     margin: 10px 0px 10px 20px;
 }
-.update{
+
+.update {
     text-decoration: none;
     display: inline-block;
     text-align: center;
@@ -75,8 +79,10 @@ label{
     border-radius: 8px;
     width: 100px;
     padding: 10px;
+    height: 40px;
 }
-.delete{
+
+.delete {
     text-decoration: none;
     display: inline-block;
     text-align: center;
@@ -85,6 +91,9 @@ label{
     border-radius: 8px;
     width: 100px;
     padding: 10px;
+    border: none;
+    height: 40px;
+    cursor: pointer;
 }
 
 .table {
@@ -136,7 +145,7 @@ tbody tr:nth-child(odd) {
     width: 82%;
 }
 
-.birthdate input{
+.birthdate input {
     width: 40%;
 }
 
@@ -146,7 +155,8 @@ tbody tr:nth-child(odd) {
     padding: 0px;
     width: 20%;
 }
-.birthdate :first-child{
+
+.birthdate :first-child {
     float: left;
     margin-top: 4px;
 }
@@ -155,26 +165,30 @@ tbody tr:nth-child(odd) {
     float: right;
     margin-top: 4px;
 }
-.dateinput{
+
+.dateinput {
     float: right;
     width: 80%;
     resize: vertical;
 }
-.radiomarried{
+
+.radiomarried {
     display: inline-block;
     margin-left: 20px;
 }
 
-.rowmarried{
+.rowmarried {
     box-sizing: border-box;
     padding: 0px 5px;
     margin-top: 10px;
     width: 100%;
 }
-.rowmarried label{
+
+.rowmarried label {
     width: 18%;
 }
-.rowmarried select{
+
+.rowmarried select {
     float: right;
     width: 80%;
     border: 2px solid whitesmoke;
@@ -183,6 +197,7 @@ tbody tr:nth-child(odd) {
     padding: 10px;
     font-size: medium;
 }
+
 .rowradio {
     padding: 0px;
     display: block;
@@ -200,7 +215,8 @@ tbody tr:nth-child(odd) {
     display: inline-block;
     margin-left: 20px;
 }
-.radio .option{
+
+.radio .option {
     display: inline-block;
     margin-right: 10px;
 }
@@ -216,14 +232,15 @@ tbody tr:nth-child(odd) {
     cursor: pointer;
     accent-color: blue;
 }
-.findcluster{
+
+.findcluster {
     box-sizing: border-box;
     margin: 20px 10px 0px 0px;
     border-bottom: 1px solid #CACBCC;
     padding-bottom: 10px;
 }
 
-.search{
+.search {
     background-color: #10CAF0;
     color: black;
     display: inline-block;
@@ -236,7 +253,8 @@ tbody tr:nth-child(odd) {
     border: none;
     cursor: pointer;
 }
-.reset{
+
+.reset {
     background-color: #FFC007;
     display: inline-block;
     width: 115px;
@@ -246,18 +264,20 @@ tbody tr:nth-child(odd) {
     text-align: center;
     text-decoration: none;
     padding: 10px;
+    cursor: pointer;
 }
 
-.footer-form{
+.footer-form {
     border-top: 1px solid #CACBCC;
 }
-.save{
+
+.save {
     background-color: #0C6DFD;
     color: white;
-    margin: 10px ;
+    margin: 10px;
     margin-left: 15px;
     margin-right: 1px;
-    padding: 10px ;
+    padding: 10px;
     width: 95px;
     height: 40px;
     border-radius: 8px;
@@ -274,32 +294,129 @@ tbody tr:nth-child(odd) {
     width: 100%;
     border-top: 1px solid #CACBCC;
 }
-.footer > a {
+
+.footer>a {
     display: inline-block;
     text-decoration: none;
 }
 
 .pagination {
-    display:flex;
+    display: flex;
     margin: 10px 25px;
     border-radius: 8px;
     background-color: white;
     border-collapse: collapse;
-  }
-  
-  .pagination a {
+}
+
+.pagination a {
     display: inline-block;
     padding: 9px 13px;
     text-decoration: none;
     color: blue;
 
-    
-  }
-.pagenumber{
+
+}
+
+.pagenumber {
     display: inline-block;
-}  
+}
+
 .pagenumber a.active {
     color: white;
     background-color: rgb(0, 89, 255);
     border: 1px solid rgb(0, 89, 255);
-  }
+}
+
+#deleteConfirm {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15px auto;
+    /* 15% from the top and centered */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 32%;
+    border-radius: 8px;
+    /* Could be more or less, depending on screen size */
+}
+h4{
+    margin-bottom: 0;
+    margin-top: 0px;
+    line-height: 1.5;
+}
+/* The "Yes" button */
+#confirmed {
+    background-color: rgb(255, 192, 7);
+    color: black;
+    padding: 5px 30px;
+    margin: 10px 0 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#confirmed:hover {
+    opacity: 1;
+}
+#dialog{
+    padding-left: 20px;
+}
+/* The "No" button */
+.no {
+    background-color: #6C757D;
+    border: 1px solid #6C757D;
+    padding: 5px 30px;
+    margin: 10px;
+    margin-bottom: 5px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.no:hover {
+    opacity: 1;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #e9ecef;
+}
